@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benedict Jambalos - Game Developer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        nav {
+            background: #2c3e50;
+            color: white;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #3498db;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .profile-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .circle-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 5px solid white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.4);
+        }
+        
+        .circle-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .section {
+            margin-bottom: 3rem;
+        }
+
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            border-bottom: 3px solid #3498db;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .info-item {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 5px;
+        }
+
+        .info-item strong {
+            color: #2c3e50;
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .skill-item {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .skill-name {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+
+        .skill-bar {
+            background: #ecf0f1;
+            height: 25px;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 10px;
+            color: white;
+            font-size: 0.85rem;
+            font-weight: bold;
+            transition: width 1s ease;
+        }
+
+        .resume-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .resume-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-left: 4px solid #3498db;
+        }
+
+        .resume-date {
+            color: #3498db;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .resume-item h3 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .resume-position {
+            color: #7f8c8d;
+            font-style: italic;
+            margin-bottom: 0.8rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .contact-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            color: #3498db;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-item h3 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-item a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            nav ul {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#resume">Resume</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="profile-container">
+            <div class="circle-img">
+                <img src="Ben.png" alt="Profile Picture">
+            </div>
+        </div>
+        <h1>John Benedict Jambalos</h1>
+        <p>Game Developer | Network Engineer</p>
+    </section>
+
+    <div class="container">
+        <section id="about" class="section">
+            <h2>About Me</h2>
+            <p style="margin: 1.5rem 0;">Hi! I'm Benedict, a BSIT student at Divine Word College of Calapan. I enjoy coding, designing, and exploring different areas of IT. I've trained in Java, CSS, Networking, Blender, and UI/UX design. I love learning new skills and applying them to projects that challenge me and help me grow as a future IT professional.</p>
+            
+            <div class="about-grid">
+                <div class="info-item">
+                    <strong>Date of Birth</strong>
+                    September 7, 2005
+                </div>
+                <div class="info-item">
+                    <strong>Location</strong>
+                    Bagumbayan, Roxas, Oriental Mindoro
+                </div>
+                <div class="info-item">
+                    <strong>Email</strong>
+                    johnbenedict.jambalos@dwcc.edu.ph
+                </div>
+                <div class="info-item">
+                    <strong>Phone</strong>
+                    +09611420682
+                </div>
+            </div>
+        </section>
+
+        <section id="resume" class="section">
+            <h2>Certifications & Training</h2>
+            <div class="resume-grid">
+                <div class="resume-item">
+                    <div class="resume-date">2023-2024</div>
+                    <h3>CSS NCIII Certified</h3>
+                    <div class="resume-position">Divine Word College Calapan</div>
+                    <p>Completed training in computer systems servicing, hardware troubleshooting, software installation, and basic networking.</p>
+                </div>
+
+                <div class="resume-item">
+                    <div class="resume-date">2024-2025</div>
+                    <h3>Java Programming NCII</h3>
+                    <div class="resume-position">Divine Word College Calapan</div>
+                    <p>Gained understanding of Java syntax, object-oriented programming principles, and GUI development using Java Swing.</p>
+                </div>
+
+                <div class="resume-item">
+                    <div class="resume-date">2025</div>
+                    <h3>Networking Basics Certificate</h3>
+                    <div class="resume-position">Divine Word College Calapan</div>
+                    <p>Acquired knowledge in IP addressing, subnetting, routing, and switching concepts for network management.</p>
+                </div>
+
+                <div class="resume-item">
+                    <div class="resume-date">2025</div>
+                    <h3>JavaScript for Beginners</h3>
+                    <div class="resume-position">Divine Word College Calapan</div>
+                    <p>Learned JavaScript fundamentals including variables, functions, loops, DOM manipulation, and event handling.</p>
+                </div>
+
+                <div class="resume-item">
+                    <div class="resume-date">2024-2025</div>
+                    <h3>Introduction to Blender 3D</h3>
+                    <div class="resume-position">Self Studied</div>
+                    <p>Gained knowledge in 3D modeling, texturing, lighting, and basic animation in Blender.</p>
+                </div>
+
+                <div class="resume-item">
+                    <div class="resume-date">2024-2025</div>
+                    <h3>3D Modeling with Blockbench</h3>
+                    <div class="resume-position">Self Studied</div>
+                    <p>Learned 3D modeling and animation basics, created game models and Minecraft modding assets.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="section">
+            <h2>My Skills</h2>
+            <p style="margin: 1rem 0;">Technical and creative skills developed through certifications, self-study, and real projects.</p>
+            
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <div class="skill-name">Java Programming</div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 85%;">85%</div>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-name">UI/UX Design (Figma)</div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 80%;">80%</div>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-name">JavaScript</div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 75%;">75%</div>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-name">HTML & CSS</div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 75%;">75%</div>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-name">Networking Basics</div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 70%;">70%</div>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-name">3D Modeling</div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 65%;">65%</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <h2>Contact Me</h2>
+            <p style="margin: 1rem 0;">Let's connect! Feel free to reach out for collaborations, projects, or just to say hello.</p>
+            
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <h3>Address</h3>
+                    <p>Bagumbayan, Roxas<br>Oriental Mindoro, Philippines</p>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">📞</div>
+                    <h3>Phone</h3>
+                    <p><a href="tel:+09611420682">+09611420682</a></p>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">✉️</div>
+                    <h3>Email</h3>
+                    <p><a href="mailto:johnbenedict.jambalos@dwcc.edu.ph">johnbenedict.jambalos@dwcc.edu.ph</a></p>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">🌐</div>
+                    <h3>Social Media</h3>
+                    <p><a href="#">Facebook</a></p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 John Benedict Jambalos. All rights reserved.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.8;">Game Developer | Network Engineer</p>
+    </footer>
+</body>
+</html>
